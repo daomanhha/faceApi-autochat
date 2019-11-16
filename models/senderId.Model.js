@@ -7,5 +7,5 @@ let SenderSchema = new mongoose.Schema({
 	}
 });
 
-let Sender = mongoose.model('Sender',AdminSchema,'senderId');
-module.exports = Admin; 
+let Sender = mongoose.model('Sender',SenderSchema,'senderId');
+module.exports = Sender; 

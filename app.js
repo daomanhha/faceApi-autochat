@@ -8,9 +8,13 @@ const mongoose = require('mongoose');
 const csrf = require('csurf');
 const logger = require('morgan');
 
+//Router
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const mainRouter = require('./routes/main.Router');
+const webHookRouter = require('./routes/webhook.Router');
+const loginRouter = require('./routes/login.Router');
+const logoutRouter = require('./routes/logout.Router');
 
 //middleware 
 const authenticationLogin = require('./middleware/authentication.middleware');
@@ -41,9 +45,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', csrfProtection, indexRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login',authenticationLogin.authenticationLoginOut, csrfProtection, loginRouter);
+app.use('/logout', logoutRouter);
 app.use('/main', authenticationLogin.authenticationLogin,  mainRouter);
+app.use('/webhook', webHookRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

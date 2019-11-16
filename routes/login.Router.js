@@ -3,10 +3,10 @@ const router = express.Router();
 const loginController = require('../controllers/indexController/login.controller');
 const validateLogin = require('../middleware/validate.middleware');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
+router.get('/', loginController.getLogin);
+
+router.post('/',validateLogin.loginValidate, loginController.postLogin);
 
 
 module.exports = router;

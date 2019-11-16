@@ -8,8 +8,12 @@ let SendedSchema = new mongoose.Schema({
 	Time:{
 		type: String,
 		required: true
+	},
+	Message:{
+		type: String,
+		required: true
 	}
 });
 
-let Sended = mongoose.model('Sended',AdminSchema,'sendedControl');
+let Sended = mongoose.model('Sended',SendedSchema,'sendedControl');
 module.exports = Sended; 
