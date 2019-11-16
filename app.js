@@ -12,6 +12,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const mainRouter = require('./routes/main.Router');
 
+//middleware 
+const authenticationLogin = require('./middleware/authentication.middleware');
+
 const app = express();
 const csrfProtection = csrf({ cookie: true });
 
@@ -40,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', csrfProtection, indexRouter);
 app.use('/users', usersRouter);
-app.use('/main', mainRouter);
+app.use('/main', authenticationLogin.authenticationLogin,  mainRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
