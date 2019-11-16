@@ -1,0 +1,14 @@
+<%-include('header')%>
+	<form style="width: 35%; position: absolute; top:40%;left:50%; transform: translate(-50%,-50%);" action="/login" method="POST" role="form">
+		<legend>Đăng nhập</legend>
+		<div class="form-group">
+			<label for="">Tên đăng nhập</label>
+			<input type="text" class="form-control" name="userName" placeholder="Tên đăng nhập">
+		</div>
+		<div class="form-group">
+			<label for="">Mật khẩu</label>
+			<input type="text" class="form-control" name="passWord" placeholder="Mật khẩu">
+		</div>
+		<button type="submit" class="btn btn-primary">Đăng nhập</button>
+	</form>
+<%-include('footer')%>
