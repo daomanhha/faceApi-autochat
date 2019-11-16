@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/login',loginController.getLogin);
+router.get('/login', loginController.getLogin);
 
 router.post('/login',loginController.postLogin);
 

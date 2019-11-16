@@ -6,6 +6,7 @@
 				<div class="alert alert-danger"><%= message %></div>
 			<% })%>
 		<% } %>
+		<input type="hidden" name="_csrf" value = <%=csrfToken %>>
 		<div class="form-group">
 			<label for="">Tên đăng nhập</label>
 			<input type="text" class="form-control" name="userName" placeholder="Tên đăng nhập">
